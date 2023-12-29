@@ -1,12 +1,32 @@
-function createLikertOption(question, option) {
+function createLikertQuestion(question) {
+    var container = document.createElement('div');
+    container.className = 'question-container mb-3';
+    container.setAttribute('data-theme', question.theme); // Define o tema da pergunta
+
+    var label = document.createElement('label');
+    label.textContent = question.question;
+    container.appendChild(label);
+
+    var scale = ['Discordo Totalmente', 'Discordo', 'Neutro', 'Concordo', 'Concordo Totalmente'];
+    var likertContainer = document.createElement('div');
+    likertContainer.className = 'mt-2';
+    scale.forEach(function(option) {
+        likertContainer.appendChild(createLikertOption(question.id, option)); // Passando o ID da pergunta para a função de opção
+    });
+    container.appendChild(likertContainer);
+
+    return container;
+}
+
+function createLikertOption(questionId, option) {
     var optionDiv = document.createElement('div');
     optionDiv.className = 'form-check';
 
     var radio = document.createElement('input');
     radio.type = 'radio';
     radio.className = 'form-check-input';
-    radio.id = question.id + '_' + option;
-    radio.name = 'answer_' + question.id; // Assegura que cada pergunta tem um grupo único
+    radio.id = questionId + '_' + option;
+    radio.name = questionId; // Agrupa os botões de rádio pelo ID da pergunta
     radio.value = option;
 
     var label = document.createElement('label');
@@ -18,26 +38,6 @@ function createLikertOption(question, option) {
     optionDiv.appendChild(label);
 
     return optionDiv;
-}
-
-
-function createLikertQuestion(question) {
-    var container = document.createElement('div');
-    container.className = 'question-container mb-3';
-
-    var label = document.createElement('label');
-    label.textContent = question.question;
-    container.appendChild(label);
-
-    var scale = ['Discordo Totalmente', 'Discordo', 'Neutro', 'Concordo', 'Concordo Totalmente'];
-    var likertContainer = document.createElement('div');
-    likertContainer.className = 'mt-2';
-    scale.forEach(function(option) {
-        likertContainer.appendChild(createLikertOption(question, option));
-    });
-    container.appendChild(likertContainer);
-
-    return container;
 }
 
 function loadLikertQuestions() {
@@ -65,13 +65,19 @@ function loadLikertQuestions() {
 }
 
 document.getElementById('submit-button').addEventListener('click', function() {
-    var answers = {};
+    var answers = [];
     document.querySelectorAll('.question-container').forEach(function (container) {
         var selectedRadio = container.querySelector('input[type="radio"]:checked');
         if (selectedRadio) {
             var questionId = selectedRadio.name;
             var answerValue = selectedRadio.value;
-            answers[questionId] = answerValue;
+            var questionTheme = container.getAttribute('data-theme'); // Coletando o tema
+
+            answers.push({
+                id: questionId,
+                response: answerValue,
+                theme: questionTheme // Tema incluso nas respostas
+            });
         }
     });
     processAndRedirect(answers);
@@ -79,9 +85,8 @@ document.getElementById('submit-button').addEventListener('click', function() {
 
 function processAndRedirect(answers) {
     localStorage.setItem('surveyResults', JSON.stringify(answers));
-    window.location.href = 'pages/radar-chart.html';
+    window.location.href = 'radar-chart.html';
 }
-
 
 // Load Likert questions on page load
 window.onload = loadLikertQuestions;

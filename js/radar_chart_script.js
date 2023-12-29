@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var answers = JSON.parse(localStorage.getItem('surveyResults'));
-    console.log("Respostas carregadas:", answers);
+    const answers = JSON.parse(localStorage.getItem('surveyResults'));
+
+    console.log(answers)
 
     const likertMapping = {
         'Discordo Totalmente': 0,
@@ -10,15 +11,27 @@ document.addEventListener('DOMContentLoaded', function() {
         'Concordo Totalmente': 4
     };
 
+    // Array de perguntas - substitua isso pelo seu array real de perguntas
+    const questionsList = [
+        // ... suas perguntas com 'theme', 'id', etc. ...
+    ];
+
+    // Criar um mapeamento de ID de pergunta para tema
+    const questionThemes = questionsList.reduce((acc, question) => {
+        acc[question.id] = question.theme;
+        return acc;
+    }, {});
+
     var scoresByTheme = {};
     var questionCountsByTheme = {};
 
-    for (var questionId in answers) {
-        var theme = questionId.split('_')[0];
-        var score = likertMapping[answers[questionId]];
+    for (const questionId in answers) {
+        const response = answers[questionId];
+        const theme = questionThemes[questionId];
+        const score = likertMapping[response];
 
-        if (score === undefined) {
-            console.error('Resposta Likert não mapeada encontrada:', answers[questionId]);
+        if (!theme || score === undefined) {
+            console.error('Tema ou resposta não encontrados para a pergunta:', questionId);
             continue;
         }
 
@@ -31,36 +44,35 @@ document.addEventListener('DOMContentLoaded', function() {
         questionCountsByTheme[theme]++;
     }
 
-    console.log("scoresByTheme", scoresByTheme)
-
-    var dataPoints = [];
-    var themes = Object.keys(scoresByTheme);
-    
-    themes.forEach(theme => {
-        var average = scoresByTheme[theme] / questionCountsByTheme[theme] / 4; // Normalizando para a escala de 0 a 1
-        dataPoints.push(average);
+    const themes = Object.keys(scoresByTheme);
+    const dataPoints = themes.map(theme => {
+        const average = scoresByTheme[theme] / questionCountsByTheme[theme] / 4; // Normalizando a média
+        return average;
     });
 
-    var ctx = document.getElementById('radarChart').getContext('2d');
-    var radarChart = new Chart(ctx, {
+    const ctx = document.getElementById('radarChart').getContext('2d');
+    const radarChart = new Chart(ctx, {
         type: 'radar',
         data: {
             labels: themes,
             datasets: [{
                 label: 'Resultado do Questionário',
                 data: dataPoints,
-                backgroundColor: 'rgba(0, 123, 255, 0.2)',
-                borderColor: 'rgba(0, 123, 255, 1)',
-                borderWidth: 1
+                fill: true,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgb(255, 99, 132)',
+                pointBackgroundColor: 'rgb(255, 99, 132)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(255, 99, 132)'
             }]
         },
         options: {
             scale: {
-                ticks: {
-                    beginAtZero: true,
-                    max: 1
-                }
+                ticks: { beginAtZero: true, max: 1 }
             }
         }
     });
 });
+
+

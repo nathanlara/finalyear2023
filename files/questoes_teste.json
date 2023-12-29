@@ -1,0 +1,81 @@
+{
+    "questions": [
+        {
+            "theme": "Meu Desenvolvimento",
+            "question": "Estou satisfeito com o crescimento pessoal que alcancei este ano.",
+            "type": "likert",
+            "scale": "Discordo totalmente a Concordo totalmente",
+            "id": "question51"
+        },
+        {
+            "theme": "Meu Desenvolvimento",
+            "question": "Gerenciei eficazmente o estresse e mantive uma mentalidade positiva.",
+            "type": "likert",
+            "scale": "Discordo totalmente a Concordo totalmente",
+            "id": "question52"
+        },
+        {
+            "theme": "Meu Desenvolvimento",
+            "question": "Frequentemente saí da minha zona de conforto para experimentar coisas novas.",
+            "type": "likert",
+            "scale": "Discordo totalmente a Concordo totalmente",
+            "id": "question53"
+        },
+        {
+            "theme": "Meu Desenvolvimento",
+            "question": "Estou satisfeito com o crescimento pessoal que alcancei este ano.",
+            "type": "likert",
+            "scale": "Discordo totalmente a Concordo totalmente",
+            "id": "question54"
+        },
+        {
+            "theme": "Meu Desenvolvimento",
+            "question": "Gerenciei eficazmente o estresse e mantive uma mentalidade positiva.",
+            "type": "likert",
+            "scale": "Discordo totalmente a Concordo totalmente",
+            "id": "question55"
+        },
+        {
+            "theme": "Meu Crescimento Profissional",
+            "question": "Estou satisfeito com o progresso da minha carreira no último ano.",
+            "type": "likert",
+            "scale": "Discordo totalmente a Concordo totalmente",
+            "id": "question59"
+        },
+        {
+            "theme": "Meu Crescimento Profissional",
+            "question": "Sinto que tenho uma direção clara na minha trajetória profissional.",
+            "type": "likert",
+            "scale": "Discordo totalmente a Concordo totalmente",
+            "id": "question60"
+        },
+        {
+            "theme": "Meu Crescimento Profissional",
+            "question": "Acredito que desenvolvi habilidades profissionais significativas.",
+            "type": "likert",
+            "scale": "Discordo totalmente a Concordo totalmente",
+            "id": "question61"
+        },
+        {
+            "theme": "Minhas Conexões",
+            "question": "Estou satisfeito com a qualidade dos meus relacionamentos.",
+            "type": "likert",
+            "scale": "Discordo totalmente a Concordo totalmente",
+            "id": "question64"
+        },
+        {
+            "theme": "Minhas Conexões",
+            "question": "Sinto-me apoiado pelos meus amigos e família.",
+            "type": "likert",
+            "scale": "Discordo totalmente a Concordo totalmente",
+            "id": "question65"
+        },
+        {
+            "theme": "Minhas Conexões",
+            "question": "Comuniquei eficazmente minhas necessidades e limites nos relacionamentos.",
+            "type": "likert",
+            "scale": "Discordo totalmente a Concordo totalmente",
+            "id": "question66"
+        }
+    ]
+}

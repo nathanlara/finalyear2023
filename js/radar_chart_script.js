@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'Concordo Totalmente': 4
     };
 
-    fetch('../files/modified_translated_questions.json') // Caminho para o arquivo JSON com as perguntas
+    fetch('../files/quest_learn_likert.json') // Caminho para o arquivo JSON com as perguntas
         .then(response => response.json())
         .then(data => {
             const questionsList = data.questions;

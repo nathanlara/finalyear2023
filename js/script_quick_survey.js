@@ -41,7 +41,7 @@ function createLikertOption(questionId, option) {
 }
 
 function loadLikertQuestions() {
-    fetch('../files/modified_translated_questions.json') // Ajuste o caminho para o seu arquivo JSON
+    fetch('../files/quest_learn_likert.json') // Ajuste o caminho para o seu arquivo JSON
         .then(response => response.json())
         .then(data => {
             var questionsDiv = document.getElementById('likert-questions');

@@ -15,7 +15,7 @@ function createOpenQuestion(question) {
 }
 
 function loadOpenQuestions() {
-    fetch('../files/translated_questions.json')
+    fetch('../files/quest_learn_open.json')
         .then(response => response.json())
         .then(data => {
             var questionsDiv = document.getElementById('questions');

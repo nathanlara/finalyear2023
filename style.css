@@ -1,49 +1,75 @@
+:root {
+    --primary-color: #0D30C6;
+    --azul-forte: #081f5c;
+}
+
+/* Estilo padrão para a fonte Montserrat */
 body {
-    background-color: #081F5C;
-    color: #F8F6F1;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.header {
-    background-color: #081F5C;
-    color: #EBA53D;
-    padding: 10px 0;
+/* Classes para os diferentes pesos da fonte Montserrat */
+.font-montserrat-light {
+    font-weight: 300; /* Light */
 }
 
-.header-logo {
-    height: 50px;
+.font-montserrat-normal {
+    font-weight: 400; /* Normal */
 }
 
-.question-container {
-    background-color: #F8F6F1;
-    border: 1px solid #EBA53D;
-    color: #081F5C;
-    padding: 15px;
-    margin-bottom: 30px;
-    border-radius: 5px;
+.font-montserrat-bold {
+    font-weight: 700; /* Bold */
 }
 
-label {
-    font-weight: bold;
+/* Classe para a cor primária */
+.azul-futuro {
+    color: var(--primary-color);
 }
 
-.form-check-input {
-    accent-color: #EBA53D;
+.azul-escuro {
+    color: #081f5c;
 }
 
-.form-control {
-    border-color: #081F5C;
+/* Estilo inicial do navbar */
+.navbar {
+    background-color: rgb(253, 241, 239); 
+}
+  
+/* Estilo do navbar ao rolar */
+.navbar.scrolled {
+    background-color: white; /* Branco com 80% de transparência */
+}
+  
+
+.hero-section {
+    background-color: #FDF1EF;
+    height: 100vh; /* 100% da altura da tela */
+    align-items: center;
 }
 
-.btn {
-    background-color: #EBA53D;
-    color: #081F5C;
+.icon-box img {
+    width: 60px; /* ou o tamanho que preferir */
+    height: auto; /* mantém a proporção da imagem */
+    margin-bottom: 1rem; /* espaço abaixo do ícone */
 }
 
-.btn:hover {
-    background-color: #d69935;
+/* Adicione isso no seu arquivo CSS */
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
-.progress-bar {
-    background-color: #EBA53D;
+.fadeInUp {
+    animation-name: fadeInUp;
+    animation-duration: 1s;
+    animation-fill-mode: both;
 }
+
+
+
